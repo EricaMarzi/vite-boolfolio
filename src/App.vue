@@ -44,18 +44,30 @@ export default {
 
   <!--MAIN-->
   <main class="container">
-    <h1>I nostri post</h1>
-    <ul>
-      <li v-for="post in posts" :key="post.id">
-        <h4>{{ post.title }}</h4>
-      </li>
-    </ul>
+    <h1 class="my-5">I nostri post</h1>
+    <div class="row">
+      <div v-if="posts.length">
+        <div class="card mb-4 " v-for="post in posts" :key="post.id">
+          <h5 class="card-header">{{ post.title }}</h5>
+          <div class="card-body">
+            <p class="card-text">{{ post.content }}</p>
+          </div>
+          <div class="card-footer d-flex justify-content-between">
+            <div>
+              <p>Pubblicato il {{ post.created_at }}</p>
+            </div>
 
+            <a href="#" class="btn btn-primary">Continua a leggere</a>
+          </div>
+        </div>
+      </div>
+      <h2 v-else>Non ci sono post</h2>
+    </div>
   </main>
 
 
 </template>
 
-<style lang='scss' scoped>
+<style lang='scss'>
 /* style here */
 </style>
