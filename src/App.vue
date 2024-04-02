@@ -1,50 +1,21 @@
 <script>
-import axios from 'axios';
 import AppHeader from './components/AppHeader.vue';
-import PostsList from './components/posts/PostsList.vue';
-import AppAlert from './components/AppAlert.vue';
+import HomePage from './components/pages/HomePage.vue';
 const endpoint = 'http://localhost:8000/api/posts/'
 
 export default {
   name: 'Portfolio',
-  data: () => ({
-    posts: [],
-    isLoading: false,
-    isAlertOpen: false
-  }),
-  components: { AppHeader, PostsList, AppAlert },
-  methods: {
-    fetchPosts() {
-      this.isLoading = true;
-      axios.get(endpoint).then(res => {
-        this.posts = res.data;
-      }).catch(err => {
-        console.error(err);
-        this.isAlertOpen = true;
-      }).then(() => {
-        this.isLoading = false;
-      })
-    }
-  },
-  created() {
-    this.fetchPosts();
-  }
+  components: { AppHeader, HomePage },
 }
 </script>
 
 <template>
 
   <AppHeader />
-
+  <!-- <HomePage /> -->
   <main class="container">
-    <AppAlert :show="isAlertOpen" @close="isAlertOpen = false" />
-    <AppLoader v-if="isLoading" />
-    <PostsList v-else :posts="posts" />
-
-
-
+    <RouterView />
   </main>
-
 
 </template>
 

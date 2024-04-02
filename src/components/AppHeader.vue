@@ -18,7 +18,11 @@ export default {
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active fw-bold" aria-current="page" href="#">Home</a>
+                            <RouterLink class="nav-link active fw-bold" aria-current="page" to="/">Home</RouterLink>
+                        </li>
+                        <li class="nav-item">
+                            <RouterLink class="nav-link active fw-bold" aria-current="page" to="/contact-us">Contattaci
+                            </RouterLink>
                         </li>
                     </ul>
                 </div>
