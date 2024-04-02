@@ -53,7 +53,7 @@ export default {
                 <small> Pubblicato il {{ pubblicationDate }}</small>
             </div>
 
-            <a href="#" class="btn btn-bg-custom">Continua a leggere</a>
+            <RouterLink :to="`/posts/${post.id}`" class="btn btn-bg-custom">Continua a leggere</RouterLink>
         </div>
     </div>
 </template>
