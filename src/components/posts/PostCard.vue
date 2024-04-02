@@ -32,7 +32,7 @@ export default {
         <div class="card-header d-flex justify-content-between align-items-center">
             <h5>{{ post.title }}</h5>
             <div class="badge rounded-pill pill-bg-custom">
-                {{ post.category.label }}</div>
+                {{ post.category ? post.category.label : '' }}</div>
         </div>
 
         <div class="card-body clearfix">
@@ -44,12 +44,12 @@ export default {
         <div class="card-footer d-flex justify-content-between align-items-center">
 
             <div class="d-flex gap-3 ">
-                <!--Tag non ancora presenti nella chiamata api-->
-                <!-- <div>
+                <!--Tag?-->
+                <div>
                     <div class="badge rounded-pill text-bg-success">
-                        {{ post.category.tag }}</div>
-                    </div> -->
-                <!--da formattare quando metti i componenti-->
+                        {{ post.tags ? post.tags.label : '' }}</div>
+                </div>
+
                 <small> Pubblicato il {{ pubblicationDate }}</small>
             </div>
 

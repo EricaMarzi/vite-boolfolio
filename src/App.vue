@@ -6,12 +6,20 @@ const endpoint = 'http://localhost:8000/api/posts/'
 
 export default {
   name: 'Portfolio',
-  data: () => ({ posts: [] }),
+  data: () => ({
+    posts: [],
+    isLoading: false
+  }),
   components: { AppHeader, PostsList },
   methods: {
     fetchPosts() {
+      this.isLoading = true;
       axios.get(endpoint).then(res => {
         this.posts = res.data;
+      }).catch(err => {
+        console.error(err);
+      }).then(() => {
+        this.isLoading = false;
       })
     }
   },
@@ -25,8 +33,10 @@ export default {
 
   <AppHeader />
 
+
   <main class="container">
-    <PostsList :posts="posts" />
+    <AppLoader v-if="isLoading" />
+    <PostsList v-else :posts="posts" />
   </main>
 
 
