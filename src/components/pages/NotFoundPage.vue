@@ -5,7 +5,9 @@ export default {
 </script>
 
 <template>
-    <h2 class="mt-5">404</h2>
+    <figure class="text-center mt-5">
+        <img src="/img/404-error.jpg.webp" alt="404">
+    </figure>
 </template>
 
 <style lang='scss' scoped>
