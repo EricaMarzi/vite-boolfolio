@@ -5,7 +5,7 @@ export default {
 </script>
 
 <template>
-    <h2>Contattaci</h2>
+    <h2 class="mt-5">Contattaci</h2>
 </template>
 
 <style lang='scss' scoped>
