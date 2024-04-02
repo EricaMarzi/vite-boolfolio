@@ -37,7 +37,7 @@ export default {
 
         <div class="card-body clearfix">
             <img v-if="post.image" :src="post.image" :alt="post.title" class="img-fluid float-start me-2">
-            <p class="card-text">{{ abstract }}</p>
+            <p class="card-text">{{ isDetail ? post.content : abstract }}</p>
         </div>
 
 
