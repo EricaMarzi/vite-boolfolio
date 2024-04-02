@@ -6,9 +6,11 @@ export default {
 
 <template>
     <header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <nav class="navbar navbar-expand-lg bg-body-white border-bottom">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Portfolio</a>
+                <a class="navbar-brand" href="#">
+                    <img src="/img/portfolio.png" alt="Logo" class="logo-portfolio">
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -16,7 +18,7 @@ export default {
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link active fw-bold" aria-current="page" href="#">Home</a>
                         </li>
                     </ul>
                 </div>
@@ -26,5 +28,8 @@ export default {
 </template>
 
 <style lang='scss' scoped>
-/* style here */
+.logo-portfolio {
+    width: 200px;
+    margin-left: 20px;
+}
 </style>
