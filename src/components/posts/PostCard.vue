@@ -1,7 +1,7 @@
 <script>
 export default {
     name: 'PostCard',
-    props: { post: Object },
+    props: { post: Object, isDetail: Boolean },
     computed: {
         abstract() {
             const abstract = this.post.content.slice(0, 800);
@@ -53,7 +53,8 @@ export default {
                 <small> Pubblicato il {{ pubblicationDate }}</small>
             </div>
 
-            <RouterLink :to="`/posts/${post.id}`" class="btn btn-bg-custom">Continua a leggere</RouterLink>
+            <RouterLink v-if="!isDetail" :to="`/posts/${post.id}`" class="btn btn-bg-custom">Continua a leggere
+            </RouterLink>
         </div>
     </div>
 </template>

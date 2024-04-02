@@ -12,7 +12,7 @@ export default {
     <h1 class="my-5 title">I nostri post</h1>
     <div class="row">
         <div v-if="posts.length">
-            <PostCard v-for="post in   posts  " :key="post.id" :post="post" />
+            <PostCard v-for="post in   posts  " :key="post.id" :post="post" :isDetail="false" />
         </div>
         <h2 v-else>Non ci sono post pubblicati</h2>
     </div>
