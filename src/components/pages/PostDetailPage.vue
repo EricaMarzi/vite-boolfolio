@@ -26,7 +26,6 @@ export default {
 </script>
 
 <template>
-    <h2 class="mt-5">Dettaglio post</h2>
     <AppLoader v-if="isLoading && !post" />
     <PostCard v-if="!isLoading && post" :post="post" :isDetail="true" />
 </template>
