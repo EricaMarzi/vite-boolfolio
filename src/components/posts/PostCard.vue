@@ -1,7 +1,29 @@
 <script>
 export default {
     name: 'PostCard',
-    props: { post: Object }
+    props: { post: Object },
+    computed: {
+        abstract() {
+            const abstract = this.post.content.slice(0, 800);
+            return abstract + '...';
+        },
+        pubblicationDate() {
+            const date = new Date(this.post.created_at);
+
+            let minutes = date.getMinutes();
+            let hours = date.getHours();
+            let day = date.getDate();
+            let month = date.getMonth() + 1;
+            const year = date.getFullYear();
+
+            if (day < 10) day = '0' + day;
+            if (month < 10) month = '0' + month;
+            if (minutes < 10) minutes = '0' + minutes;
+            if (hours < 10) hours = '0' + hours;
+
+            return `${day}/${month}/${year} alle ${hours}:${minutes}`
+        }
+    }
 }
 </script>
 
@@ -9,26 +31,26 @@ export default {
     <div class="card mb-4">
         <div class="card-header d-flex justify-content-between align-items-center">
             <h5>{{ post.title }}</h5>
-            <div class="badge rounded-pill text-bg-success">
+            <div class="badge rounded-pill pill-bg-custom">
                 {{ post.category.label }}</div>
         </div>
 
         <div class="card-body clearfix">
             <img v-if="post.image" :src="post.image" :alt="post.title" class="img-fluid float-start me-2">
-            <p class="card-text">{{ post.content.slice(0, 800) }}...</p>
+            <p class="card-text">{{ abstract }}</p>
         </div>
 
 
-        <div class="card-footer d-flex justify-content-between">
+        <div class="card-footer d-flex justify-content-between align-items-center">
 
-            <div class="d-flex gap-3">
+            <div class="d-flex gap-3 ">
                 <!--Tag non ancora presenti nella chiamata api-->
                 <!-- <div>
                     <div class="badge rounded-pill text-bg-success">
                         {{ post.category.tag }}</div>
                     </div> -->
                 <!--da formattare quando metti i componenti-->
-                <div> Pubblicato il {{ post.created_at }}</div>
+                <small> Pubblicato il {{ pubblicationDate }}</small>
             </div>
 
             <a href="#" class="btn btn-bg-custom">Continua a leggere</a>
@@ -37,6 +59,11 @@ export default {
 </template>
 
 <style lang='scss' scoped>
+.pill-bg-custom {
+    background-color: #00e87e;
+    color: white;
+}
+
 img {
     width: 200px;
 }
