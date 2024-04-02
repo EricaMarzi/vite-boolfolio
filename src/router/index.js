@@ -5,9 +5,10 @@ import ContactUsPage from '../components/pages/ContactUsPage.vue';
 
 const router = createRouter({
     history: createWebHistory(),
+    linkExactActiveClass: 'active',
     routes: [
-        { path: '/', component: HomePage },
-        { path: '/contact-us', component: ContactUsPage },
+        { path: '/', component: HomePage, name: 'home' },
+        { path: '/contact-us', component: ContactUsPage, name: 'contact-us' },
     ]
 });
 
