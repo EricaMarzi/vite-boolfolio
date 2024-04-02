@@ -27,7 +27,7 @@ export default {
 
 <template>
     <AppLoader v-if="isLoading && !post" />
-    <PostCard v-if="!isLoading && post" :post="post" :isDetail="true" />
+    <PostCard v-if="!isLoading && post" :post="post" :isDetail="true" class="mt-5" />
 </template>
 
 <style lang='scss' scoped>
