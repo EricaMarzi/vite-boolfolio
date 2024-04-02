@@ -1,10 +1,12 @@
 <script>
 import axios from 'axios';
+import AppHeader from './components/AppHeader.vue';
 const endpoint = 'http://localhost:8000/api/posts/'
 
 export default {
   name: 'Portfolio',
   data: () => ({ posts: [] }),
+  components: { AppHeader },
   methods: {
     fetchPosts() {
       axios.get(endpoint).then(res => {
@@ -21,7 +23,7 @@ export default {
 <template>
 
   <!--HEADER-->
-  <header>
+  <!-- <header>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Portfolio</a>
@@ -38,7 +40,8 @@ export default {
         </div>
       </div>
     </nav>
-  </header>
+  </header> -->
+  <AppHeader />
 
 
   <!--MAIN-->
