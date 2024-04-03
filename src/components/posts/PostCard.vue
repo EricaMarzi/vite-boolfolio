@@ -4,7 +4,7 @@ export default {
     props: { post: Object, isDetail: Boolean },
     computed: {
         abstract() {
-            const abstract = this.post.content.slice(0, 800);
+            const abstract = this.post.content.slice(0, 450);
             return abstract + '...';
         },
         pubblicationDate() {
@@ -28,38 +28,74 @@ export default {
 </script>
 
 <template>
-    <div class="card mb-4">
-        <div class="card-header d-flex justify-content-between align-items-center">
+    <!--Serve dinamicizzare la classe per cambiare la width da 400px a 100%-->
+    <div class="f-item">
+        <!-- <div class="body"> -->
+        <!--Card Header-->
+        <div class="header d-flex justify-content-between align-items-center">
             <h5>{{ post.title }}</h5>
             <div class="badge rounded-pill pill-bg-custom">
                 {{ post.category ? post.category.label : '' }}</div>
         </div>
 
-        <div class="card-body clearfix">
+        <!--Card Main-->
+        <div class="main clearfix">
             <img v-if="post.image" :src="post.image" :alt="post.title" class="img-fluid float-start me-2">
             <p class="card-text">{{ isDetail ? post.content : abstract }}</p>
         </div>
 
-
-        <div class="card-footer d-flex justify-content-between align-items-center">
-
-            <div class="d-flex gap-3 ">
-                <!--Tag?-->
-                <div>
+        <!--Card Footer-->
+        <div class="footer">
+            <div class="p-2 text-center">
+                <!--Tag da implementare e spostare-->
+                <!-- <div>
                     <div class="badge rounded-pill text-bg-success">
                         {{ post.tags ? post.tags.label : '' }}</div>
-                </div>
-
+                </div> -->
                 <small> Pubblicato il {{ pubblicationDate }}</small>
             </div>
-
-            <RouterLink v-if="!isDetail" :to="`/posts/${post.id}`" class="btn btn-bg-custom">Continua a leggere
+            <!--Rotta singolo post-->
+            <RouterLink v-if="!isDetail" :to="`/posts/${post.id}`" class="btn btn-bg-custom more">Continua a leggere
             </RouterLink>
         </div>
+        <!-- </div> -->
     </div>
+
 </template>
 
 <style lang='scss' scoped>
+.f-item {
+    position: relative;
+    // background-color: #00b6b3;
+    height: fit-content;
+    width: 400px;
+    border: 2px solid #00e87e;
+
+    margin: 1rem;
+    flex-basis: calc(100% / 3 - 2rem);
+
+
+    .header {
+        padding: 10px 20px;
+        border-bottom: 1px solid lightgray;
+    }
+
+    .main {
+        padding: 10px;
+        text-align: justify;
+        border-bottom: 1px solid lightgray;
+    }
+
+    .footer {
+        padding: 0 5px;
+
+        .more {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+    }
+}
+
 .pill-bg-custom {
     background-color: #00e87e;
     color: white;
