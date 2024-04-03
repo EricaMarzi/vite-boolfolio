@@ -84,7 +84,9 @@ export default {
     }
 
     .main {
+        min-height: 470px;
         padding: 10px;
+        margin-top: 10px;
         text-align: justify;
         border-bottom: 1px solid lightgray;
     }
