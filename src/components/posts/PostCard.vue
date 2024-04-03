@@ -66,13 +66,16 @@ export default {
 <style lang='scss' scoped>
 .f-item {
     position: relative;
-    // background-color: #00b6b3;
     height: fit-content;
     width: 400px;
-    border: 2px solid #00e87e;
 
     margin: 1rem;
     flex-basis: calc(100% / 3 - 2rem);
+
+
+    border-style: solid;
+    border-width: 2px;
+    border-image: linear-gradient(45deg, #00b6b3, #00e87e) 1;
 
 
     .header {

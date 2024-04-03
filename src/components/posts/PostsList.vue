@@ -9,7 +9,7 @@ export default {
 
 <template>
 
-    <h1 class="my-5 title">I nostri post</h1>
+    <h1 class="my-3 title">I nostri post</h1>
     <!-- <div class="row">
         <div class="col-4"> -->
     <div v-if="posts.length" class="d-flex f-container">
@@ -22,7 +22,10 @@ export default {
 
 <style lang='scss' scoped>
 .title {
-    color: #00b6b3;
+    font-size: 72px;
+    background: -webkit-linear-gradient(#00b6b3, #00e87e);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 
