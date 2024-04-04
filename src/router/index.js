@@ -10,7 +10,8 @@ const router = createRouter({
     linkExactActiveClass: 'active',
     routes: [
         { path: '/', component: HomePage, name: 'home' },
-        { path: '/posts/:id', component: PostDetailPage, name: 'post-detail' },
+        // { path: '/posts/:id', component: PostDetailPage, name: 'post-detail' },
+        { path: '/posts/:slug', component: PostDetailPage, name: 'post-detail' },
         { path: '/contact-us', component: ContactUsPage, name: 'contact-us' },
         { path: '/not-found', component: NotFoundPage, name: 'not-found' },
         { path: '/:pathMatch(.*)*', redirect: 'not-found' },

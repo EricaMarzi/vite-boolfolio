@@ -29,7 +29,7 @@ export default {
 
 <template>
     <!--Serve dinamicizzare la classe per cambiare la width da 400px a 100%-->
-    <div class="f-item">
+    <div class="f-item" :class="isDetail ? detail : index">
         <!-- <div class="body"> -->
         <!--Card Header-->
         <div class="header d-flex justify-content-between align-items-center">
@@ -55,7 +55,7 @@ export default {
                 <small> Pubblicato il {{ pubblicationDate }}</small>
             </div>
             <!--Rotta singolo post-->
-            <RouterLink v-if="!isDetail" :to="`/posts/${post.id}`" class="btn btn-bg-custom more">Continua a leggere
+            <RouterLink v-if="!isDetail" :to="`/posts/${post.slug}`" class="btn btn-bg-custom more">Continua a leggere
             </RouterLink>
         </div>
         <!-- </div> -->
@@ -64,6 +64,14 @@ export default {
 </template>
 
 <style lang='scss' scoped>
+.index {
+    width: 400px;
+}
+
+.detail {
+    width: 100%;
+}
+
 .f-item {
     position: relative;
     height: fit-content;

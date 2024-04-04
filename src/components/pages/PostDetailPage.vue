@@ -13,7 +13,7 @@ export default {
     methods: {
         getPost() {
             this.isLoading = true;
-            axios.get(endpoint + this.$route.params.id)
+            axios.get(endpoint + this.$route.params.slug)
                 .then(res => { this.post = res.data; })
                 .catch(err => { console.error(err.message) })
                 .then(() => { this.isLoading = false })
