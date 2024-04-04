@@ -34,12 +34,13 @@ export default {
         <!--Card Header-->
         <div class="header d-flex justify-content-between align-items-center">
             <h5>{{ post.title }}</h5>
-            <div class="badge rounded-pill pill-bg-custom">
+            <!--Categorie-->
+            <div class="badge rounded-pill " :style="{ backgroundColor: post.category ? post.category.color : '' }">
                 {{ post.category ? post.category.label : '' }}</div>
         </div>
 
         <!--Card Main-->
-        <div class="main clearfix">
+        <div class="main clearfix" :class="isDetail ? 'detail-main' : 'index-main'">
             <img v-if="post.image" :src="post.image" :alt="post.title" class="img-fluid float-start me-2">
             <p class="card-text">{{ isDetail ? post.content : abstract }}</p>
         </div>
@@ -47,11 +48,12 @@ export default {
         <!--Card Footer-->
         <div class="footer">
             <div class="p-2 text-center">
-                <!--Tag da implementare e spostare-->
-                <!-- <div>
-                    <div class="badge rounded-pill text-bg-success">
-                        {{ post.tags ? post.tags.label : '' }}</div>
-                </div> -->
+                <!--Tag-->
+                <div v-if="post.tags.length">
+                    <div v-for="tag in post.tags" :key="tag.id" class="badge me-2"
+                        :style="{ backgroundColor: tag.color }">
+                        {{ tag.label }}</div>
+                </div>
                 <small> Pubblicato il {{ pubblicationDate }}</small>
             </div>
             <!--Rotta singolo post-->
@@ -66,16 +68,27 @@ export default {
 <style lang='scss' scoped>
 .index {
     width: 400px;
+
+}
+
+.index-main {
+    min-height: 470px;
 }
 
 .detail {
     width: 100%;
+
 }
+
+.detail-main {
+    height: fit-content;
+}
+
+
 
 .f-item {
     position: relative;
     height: fit-content;
-    width: 400px;
 
     margin: 1rem;
     flex-basis: calc(100% / 3 - 2rem);
@@ -92,7 +105,7 @@ export default {
     }
 
     .main {
-        min-height: 470px;
+        // min-height: 470px;
         padding: 10px;
         margin-top: 10px;
         text-align: justify;
