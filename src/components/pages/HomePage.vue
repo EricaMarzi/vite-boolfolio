@@ -1,5 +1,6 @@
 <script>
 import axios from 'axios';
+import { store } from '../../data/store';
 import PostsList from '../posts/PostsList.vue';
 import AppAlert from '../AppAlert.vue';
 const endpoint = 'http://localhost:8000/api/posts/'
@@ -7,6 +8,7 @@ const endpoint = 'http://localhost:8000/api/posts/'
 export default {
     name: 'Portfolio',
     data: () => ({
+        store,
         posts: [],
         isLoading: false,
         isAlertOpen: false
@@ -14,14 +16,14 @@ export default {
     components: { PostsList, AppAlert },
     methods: {
         fetchPosts() {
-            this.isLoading = true;
+            store.isLoading = true;
             axios.get(endpoint).then(res => {
                 this.posts = res.data;
             }).catch(err => {
                 console.error(err);
                 this.isAlertOpen = true;
             }).then(() => {
-                this.isLoading = false;
+                store.isLoading = false;
             })
         }
     },
@@ -34,8 +36,8 @@ export default {
 <template>
 
     <AppAlert :show="isAlertOpen" @close="isAlertOpen = false" />
-    <AppLoader v-if="isLoading" />
-    <PostsList v-else :posts="posts" />
+    <!-- <AppLoader v-if="isLoading" /> -->
+    <PostsList v-if="!store.isLoading" :posts="posts" />
 
 </template>
 

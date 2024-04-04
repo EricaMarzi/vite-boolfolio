@@ -1,10 +1,14 @@
 <script>
 import AppHeader from './components/AppHeader.vue';
-const endpoint = 'http://localhost:8000/api/posts/'
+import AppLoader from './components/AppLoader.vue';
+import { store } from './data/store'
 
 export default {
   name: 'Portfolio',
-  components: { AppHeader },
+  components: { AppHeader, AppLoader },
+  data: () => ({
+    store
+  })
 }
 </script>
 
@@ -12,6 +16,7 @@ export default {
 
   <AppHeader />
   <main class="container">
+    <AppLoader v-if="store.isLoading" />
     <RouterView />
   </main>
 
